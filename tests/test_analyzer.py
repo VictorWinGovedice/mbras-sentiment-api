@@ -3,25 +3,27 @@ import os
 # Adiciona a raiz do projeto ao path para achar o sentiment_analyzer
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from sentiment_analyzer import analyze_message_sentiment
+# IMPORTAÇÃO CORRIGIDA: usando o nome em português conforme seu arquivo original
+from sentiment_analyzer import analisar_sentimento_mensagem
 
 def test_basic_positive():
-    sentiment, score = analyze_message_sentiment("bom otimo", is_mbras_emp=False)
-    assert sentiment == "positive"
+    # PARÂMETROS CORRIGIDOS: eh_func_mbras e retorno "positivo"
+    sentiment, score = analisar_sentimento_mensagem("bom otimo", eh_func_mbras=False)
+    assert sentiment == "positivo"
     assert score > 0.1
 
 def test_double_negation():
     # "não não gostei" -> deve ser positivo (negação dupla se anula)
-    sentiment, score = analyze_message_sentiment("não não gostei", is_mbras_emp=False)
-    assert sentiment == "positive"
+    sentiment, score = analisar_sentimento_mensagem("não não gostei", eh_func_mbras=False)
+    assert sentiment == "positivo"
 
 def test_mbras_bonus():
     # Funcionário MBRAS com palavra positiva ganha x2
-    _, score_normal = analyze_message_sentiment("bom", is_mbras_emp=False)
-    _, score_mbras = analyze_message_sentiment("bom", is_mbras_emp=True)
+    _, score_normal = analisar_sentimento_mensagem("bom", eh_func_mbras=False)
+    _, score_mbras = analisar_sentimento_mensagem("bom", eh_func_mbras=True)
     assert score_mbras == score_normal * 2
 
 def test_orphan_intensifier():
     # "muito" sozinho não tem valor positivo nem negativo
-    sentiment, _ = analyze_message_sentiment("muito", is_mbras_emp=False)
-    assert sentiment == "neutral"
+    sentiment, _ = analisar_sentimento_mensagem("muito", eh_func_mbras=False)
+    assert sentiment == "neutro"
