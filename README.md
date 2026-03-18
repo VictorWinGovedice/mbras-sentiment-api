@@ -1,4 +1,4 @@
-# 🚀 MBRAS Emotion — Sistema de Análise de Sentimentos
+# MBRAS Emotion — Sistema de Análise de Sentimentos
 
 Este projeto é uma API de alta performance desenvolvida para o desafio técnico da **MBRAS**. O sistema realiza a análise de sentimentos em tempo real de feeds de mensagens, integrando regras de negócio específicas e detecção de influência.
 
