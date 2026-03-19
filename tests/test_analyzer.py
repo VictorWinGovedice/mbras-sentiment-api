@@ -1,6 +1,5 @@
 import sys
 import os
-# Adiciona a raiz do projeto ao path para achar o sentiment_analyzer
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # IMPORTAÇÃO CORRIGIDA: usando o nome em português conforme seu arquivo original
